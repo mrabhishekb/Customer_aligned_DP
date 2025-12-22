@@ -1,0 +1,35 @@
+version: v1
+name: wf-customer-data-mrab
+type: workflow
+workflow:
+  dag:
+    - name: dg-customer-data
+      spec:
+        stack: flare:7.0
+        compute: runnable-default
+        stackSpec:
+          inputs:
+            - name: customer_data
+              dataset: dataos://thirdparty01:onboarding/customer.csv
+              format: csv
+          steps:
+            - sequence:
+                - name: final
+                  sql: >
+                    SELECT 
+                        CAST(customer_id AS LONG)  as customer_id,
+                        CAST(birth_year AS LONG) as birth_year,
+                        education, 
+                        marital_status, 
+                        CAST(income AS DOUBLE) as income,
+                        country,
+                        current_timestamp() as created_at
+                    FROM customer_data
+          outputs:
+            - name: final
+              dataset: dataos://postgresmrab:public/customer_data_mrab?acl=rw
+              driver: org.postgresql.Driver
+              format: jdbc
+              title: Purchase Dataset
+              options:
+                saveMode: overwrite

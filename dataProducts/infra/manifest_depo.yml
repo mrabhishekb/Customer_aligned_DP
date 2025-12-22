@@ -1,0 +1,25 @@
+# PostgreSQL Depot Manifest
+name: postgresmrab   # Unique name for the Depot
+version: v2alpha  # Manifest version
+type: depot       # Type of the Resource
+layer: user
+depot:
+  type: jdbc                 
+  description: default postgres depot
+  external: true
+  secrets:
+    - name: postgresmrab-rw   # Reference the Instance Secret for read & write access
+      keys: 
+        - postgresmrab-rw
+      allkeys: true
+
+    - name: postgresmrab-r    # Reference the Instance Secret for read access
+      keys: 
+        - postgresmrab-r
+      allkeys: true
+
+  jdbc:
+    subprotocol: postgresql
+    host: sys-db-dataos-ck-wlyy-training-stg.postgres.database.azure.com # Replace with the database host URL
+    port: 5432  # Replace with the database port number
+    database: modern-postgres  # Replace with the database name to connect to

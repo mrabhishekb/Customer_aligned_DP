@@ -6,4 +6,4 @@ SELECT
     income, 
     country 
 FROM 
-    public.customer_data
+    public.customer_data_mrab

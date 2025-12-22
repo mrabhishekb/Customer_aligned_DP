@@ -5,4 +5,4 @@ select
     product_name,
     price
 FROM
-    public.product_data
+    public.product_data_mrab

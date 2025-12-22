@@ -1,5 +1,5 @@
 version: v1alpha
-name: "productaffinity"
+name: "productaffinity-mrab"
 layer: user
 type: lens
 tags:
@@ -14,8 +14,8 @@ lens:
     type: depot
     name: postgres
   repo:
-    url: https://bitbucket.org/tmdc/product-affinity-practice
-    lensBaseDir: product-affinity-practice/build/semantic-model/model
+    url: https://github.com/mrabhishekb/Customer_aligned_DP
+    lensBaseDir: Customer_aligned_DP/dataProducts/semantic-model/model
     syncFlags:
       - --ref=main
 

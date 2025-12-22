@@ -7,12 +7,12 @@ tags:
 description: This semantic model provides comprehensive insights for product affinity analysis.
 lens:
   compute: runnable-default
-  secrets:
-    - name: bitbucket-cred-np
-      allKeys: true
+  #secrets:
+   # - name: bitbucket-cred-np
+      #allKeys: true
   source:
     type: depot
-    name: postgres
+    name: postgresmrab
   repo:
     url: https://github.com/mrabhishekb/Customer_aligned_DP
     lensBaseDir: Customer_aligned_DP/dataProducts/semantic-model/model

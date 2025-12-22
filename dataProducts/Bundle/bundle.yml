@@ -8,3 +8,5 @@ bundle:
     - id: quality_customer
       file: dataProducts/data_processing/quality_check_customer.yml   # Example path - update as needed
       #workspace: <workspace_name>
+    - id: lens
+      file: dataProducts/semantic-model/deployment.yml

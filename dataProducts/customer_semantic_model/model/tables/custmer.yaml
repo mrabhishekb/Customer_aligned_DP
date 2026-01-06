@@ -4,7 +4,7 @@ tables:
     description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
     public: true
         
-    dimensions:   
+    dimensions:
       - name: transaction_id
         type: string
         column: transaction_id
@@ -25,7 +25,7 @@ tables:
         public: true
 
       - name: transaction_date
-        type: time
+        type: date
         column: transaction_date
         description: "Date on which the transaction occurred."
         public: true
@@ -82,6 +82,36 @@ tables:
         description: "Currency used for the transaction (e.g., INR, USD)."
         public: true
 
+      - name: transaction_amount
+        type: number
+        column: transaction_amount
+        description: "Gross transaction amount before tax, fees, and discounts."
+        public: true
+
+      - name: tax_amount
+        type: number
+        column: tax_amount
+        description: "Tax applied to the transaction amount."
+        public: true
+
+      - name: fee_amount
+        type: number
+        column: fee_amount
+        description: "Additional fees charged for processing the transaction."
+        public: true
+
+      - name: discount_amount
+        type: number
+        column: discount_amount
+        description: "Discount applied to the transaction, if any."
+        public: true
+
+      - name: net_amount
+        type: number
+        column: net_amount
+        description: "Final transaction amount after tax, fees, and discounts."
+        public: true
+
       - name: transaction_status
         type: string
         column: transaction_status
@@ -93,6 +123,7 @@ tables:
         column: fraud_flag
         description: "Indicates whether the transaction was flagged as fraudulent."
         public: true
+
 
     measures:
       - name: total_customers

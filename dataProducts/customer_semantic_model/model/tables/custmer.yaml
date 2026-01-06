@@ -1,0 +1,126 @@
+tables:
+  - name: customer
+    sql: {{ load_sql('customer') }}
+    description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
+    public: true
+        
+    dimensions:   
+      - name: transaction_id
+        type: string
+        column: transaction_id
+        description: "Unique identifier for each transaction."
+        primary_key: true
+        public: true
+
+      - name: customer_id
+        type: number
+        column: customer_id
+        description: "Unique identifier of the customer who initiated the transaction."
+        public: true
+
+      - name: account_id
+        type: number
+        column: account_id
+        description: "Identifier of the account used for the transaction."
+        public: true
+
+      - name: transaction_date
+        type: date
+        column: transaction_date
+        description: "Date on which the transaction occurred."
+        public: true
+
+      - name: transaction_time
+        type: string
+        column: transaction_time
+        description: "Time at which the transaction was executed."
+
+      - name: transaction_type
+        type: string
+        column: transaction_type
+        description: "Type of transaction such as debit, credit, refund, or transfer."
+        public: true
+
+      - name: channel
+        type: string
+        column: channel
+        description: "Channel through which the transaction was made (ATM, POS, online, mobile)."
+        public: true
+
+      - name: merchant_category
+        type: string
+        column: merchant_category
+        description: "Category of the merchant involved in the transaction."
+        public: true
+
+      - name: merchant_id
+        type: string
+        column: merchant_id
+        description: "Unique identifier of the merchant."
+
+      - name: city
+        type: string
+        column: city
+        description: "City where the transaction took place."
+        public: true
+
+      - name: state
+        type: string
+        column: state
+        description: "State where the transaction occurred."
+        public: true
+
+      - name: country
+        type: string
+        column: country
+        description: "Country where the transaction occurred."
+        public: true
+
+      - name: currency
+        type: string
+        column: currency
+        description: "Currency used for the transaction (e.g., INR, USD)."
+        public: true
+
+      - name: transaction_status
+        type: string
+        column: transaction_status
+        description: "Final status of the transaction such as success, failed, or pending."
+        public: true
+
+      - name: fraud_flag
+        type: boolean
+        column: fraud_flag
+        description: "Indicates whether the transaction was flagged as fraudulent."
+        public: true
+
+    measures:
+      - name: total_customers
+        sql: "COUNT(DISTINCT {customer_id})"
+        type: number
+        description: "Total number of unique customers who performed transactions."
+
+      - name: total_transactions
+        sql: "COUNT({transaction_id})"
+        type: number
+        description: "Total number of transactions recorded in the dataset."
+
+      - name: total_transaction_amount
+        sql: "SUM({transaction_amount})"
+        type: number
+        description: "Sum of all transaction amounts before tax, fees, and discounts."
+
+      - name: total_net_amount
+        sql: "SUM({net_amount})"
+        type: number
+        description: "Total net amount after applying taxes, fees, and discounts."
+
+      - name: average_transaction_amount
+        sql: "AVG({transaction_amount})"
+        type: number
+        description: "Average value of a transaction amount."
+
+      - name: fraud_transactions
+        sql: "COUNT(CASE WHEN {fraud_flag} = true THEN {transaction_id} END)"
+        type: number
+        description: "Number of transactions that were flagged as fraudulent."

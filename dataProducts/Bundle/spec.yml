@@ -1,14 +1,14 @@
  
-name: retail-sa-mrab
+name: product-affinity-mrab
 version: v1beta
 entity: product
 type: data
 tags:
   - DPDomain.Marketing
-  # - DPUsecase.Customer Segmentation
-  # - DPUsecase.Product Recommendation
-  - DPTier.Source Aligned
-description: Source aligned data product for retail data mrab
+  - DPUsecase.Customer Segmentation
+  - DPUsecase.Product Recommendation
+  - DPTier.Consumer Aligned
+description: Consumer aligned data product for product affinity mrab
 # refs:
 #   - title: 'Workspace Info'
 #     href: https://dataos.info/interfaces/cli/command_reference/#workspace
@@ -17,38 +17,38 @@ description: Source aligned data product for retail data mrab
 v1beta:
   data:
     meta:
-      title: Retail Data mrab
-      # sourceCodeUrl: https://bitbucket.org/tmdc/product-affinity-practice/src/main/
-      # trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
+      title: Product Affinity mrab
+      sourceCodeUrl: https://github.com/mrabhishekb/Customer_aligned_DP
+      trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
     collaborators:
       - name: mrabhishekbharadwaj
         description: owner
     resource:
       refType: dataos
       ref: bundle:v1beta:retaildata-bundle-mrab
+    #inputs:
+      #- refType: dataos
+        #ref: dataos://thirdparty01:onboarding/customer.csv
+      #- refType: dataos
+       # ref: dataos://thirdparty01:onboarding/purchase.csv
+      #- refType: dataos
+        #ref: dataos://thirdparty01:onboarding/product.csv
     inputs:
-      - refType: dataos
-        ref: dataos://thirdparty01:onboarding/customer.csv
-      - refType: dataos
-        ref: dataos://thirdparty01:onboarding/purchase.csv
-      - refType: dataos
-        ref: dataos://thirdparty01:onboarding/product.csv
-    outputs:
       - refType: depot
-        ref: dataos://postgres:public/customer_data
+        ref: dataos://postgresmrab:public/customer_data
       - refType: depot
-        ref: dataos://postgres:public/purchase_data
+        ref: dataos://postgresmrab:public/purchase_data
       - refType: depot
-        ref: dataos://postgres:public/product_data
+        ref: dataos://postgresmrab:public/product_data
     # outputs:
     #   - refType: dataos
     #     ref: dataset:lakehouse:customer_relationship_management:product_affinity_matrix
     #   - refType: dataos
     #     ref: dataset:lakehouse:customer_relationship_management:cross_sell_recommendations
-    # ports:
-    #   lens:
-    #     ref: lens:v1alpha:productaffinity:public
-    #     refType: dataos
+    ports:
+      lens:
+        ref: lens:v1alpha:productaffinity-mrab:public
+        refType: dataos
     #   talos:
     #     - ref: service:v1:product-affinity-api:public
     #       refType: dataos

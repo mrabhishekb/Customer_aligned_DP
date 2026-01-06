@@ -1,0 +1,22 @@
+select 
+transaction_id, 
+customer_id, 
+account_id, t
+ransaction_date, 
+transaction_time, 
+transaction_type, 
+channel, 
+merchant_category, 
+merchant_id, 
+city, 
+state, 
+country, 
+currency, 
+transaction_amount, 
+tax_amount, 
+fee_amount, 
+discount_amount, 
+net_amount, 
+transaction_status, 
+fraud_flag 
+from icebase.sigma.sigma_data_1

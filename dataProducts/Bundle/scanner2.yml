@@ -22,4 +22,4 @@ workflow:
               markDeletedDataProducts: true
               dataProductFilterPattern:
                 includes:
-                 - retail-sa-mrab
+                 - product-affinity-mrab

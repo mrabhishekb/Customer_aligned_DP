@@ -18,5 +18,5 @@ fee_amount,
 discount_amount, 
 net_amount, 
 transaction_status, 
-fraud_flag 
+cast(fraud_flag as boolean) as fraud_flag
 from icebase.sigma.sigma_data_1

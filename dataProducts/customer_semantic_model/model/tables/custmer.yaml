@@ -119,7 +119,7 @@ tables:
         public: true
 
       - name: fraud_flag
-        type: bool
+        type: boolean
         column: fraud_flag
         description: "Indicates whether the transaction was flagged as fraudulent."
         public: true

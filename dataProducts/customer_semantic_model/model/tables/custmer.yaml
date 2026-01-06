@@ -25,7 +25,7 @@ tables:
         public: true
 
       - name: transaction_date
-        type: date
+        type: time
         column: transaction_date
         description: "Date on which the transaction occurred."
         public: true

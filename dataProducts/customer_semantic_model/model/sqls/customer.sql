@@ -1,8 +1,8 @@
 select 
 transaction_id, 
 customer_id, 
-account_id, t
-ransaction_date, 
+account_id,
+transaction_date, 
 transaction_time, 
 transaction_type, 
 channel, 

@@ -1,0 +1,9 @@
+name: finance-transactions-source
+type: source
+source:
+  type: snowflake
+  depot: snowflake-finance-depot
+  entities:
+    - database: TRANSACTIONS
+      schema: PUBLIC
+      table: sigma_data

@@ -1,0 +1,21 @@
+version: v1
+name: snowflake-depot-scanner
+type: workflow
+tags:
+  - Scanner
+title: Scan snowflake-depot
+description: |
+  The purpose of this workflow is to scan snowflake and see if scanner works fine with a snowflake of depot.
+workflow:
+  dag:
+    - name: scan-snowflake-db
+      title: Scan snowflake db
+      description: |
+        The purpose of this job is to scan gateway db and see if scanner works fine with a snowflake type of depot.
+      tags:
+        - Scanner
+      spec:
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          depot: snowflakedeploy # snowflake depot name

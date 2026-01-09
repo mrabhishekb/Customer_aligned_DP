@@ -1,0 +1,27 @@
+name: snowflakedeploy
+version: v2alpha
+type: depot
+tags:
+  - Snowflake depot
+  - user data
+layer: user
+depot:
+  name: snowflakedeploy
+  type: snowflake
+  description: Depot to fetch data from Snowflake datasource
+  secrets:
+    - name: snowflake-deploy-r
+      keys:
+        - snowflake-deploy-r
+      allKeys: true
+    - name: snowflake-deploy-rw
+      keys:
+        - snowflake-deploy-rw
+      allKeys: true
+  external: true
+  snowflake:
+    database: TRANSACTIONS
+    url:  IHCILHF-RM60834.snowflakecomputing.com
+    warehouse: COMPUTE_WH
+    account: IHCILHF-RM60834
+  source: snowflake

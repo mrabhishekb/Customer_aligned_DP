@@ -1,0 +1,29 @@
+version: v1alpha # Lens manifest version (mandatory)
+name: "snowflake-lens" # Lens Resource name (mandatory)
+layer: user # DataOS Layer (optional)
+type: lens # Type of Resource (mandatory)
+tags: # Tags (optional)
+  - lens
+description: snowflake depot lens deployment on lens2 # Lens Resource description (optional)
+
+# LENS-SPECIFIC SECTION
+lens:
+  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+  # secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+  #   - name: bitbucket-cred # Referred Instance Secret name (mandatory)
+  #     allKeys: true # All keys within the secret are required or not (optional)
+
+  source: # Data Source configuration
+    type: depot # Source type is depot here
+    name: snowflake-depot # Name of the snowflake depot
+
+  repo: # Lens model code repository configuration (mandatory)
+    url: https://github.com/mrabhishekb/Customer_aligned_DP# URL of repository containing the Lens model (mandatory)
+    lensBaseDir: Customer_aligned_DP/dataProducts/snowflake_dpmodel # Relative path of the Lens 'model' directory in the repository (mandatory)
+    syncFlags: # Additional flags used during synchronization, such as specific branch.
+      - --ref=lens # Repository Branch
+
+
+
+
+
